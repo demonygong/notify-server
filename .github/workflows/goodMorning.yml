@@ -5,7 +5,7 @@ on:
       - master
   schedule:
     # `分 时 天 月 周` 时按照标准时间 北京时间=标准时间+8 18表示北京时间早上2点
-    - cron: '0 0 * * *'
+    - cron: '30 23 * * *'
     - cron: '0 4 * * *'
     - cron: '0 10 * * *'
 # on:
@@ -49,7 +49,7 @@ jobs:
 
       # 5. 运行脚本
       - name: 运行脚本
-        if: github.event.schedule == '0 0 * * *'
+        if: github.event.schedule == '30 23 * * *'
         run: pnpm start
         env:
           WX_COMPANY_ID: ${{ secrets.WX_COMPANY_ID }}
