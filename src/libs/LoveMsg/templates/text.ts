@@ -11,7 +11,10 @@ export const textTemplate = (data: TextTemplateProps) => {
   let text = '早安😆ljfwxy\n'
 
   // 工作日/休息日，需要排除节假日
-  const week = weekToday()
+  let week = weekToday()
+  let todays = ['星期一','星期二','星期三','星期四','星期五','星期六','星期日']
+  let index = todays.indexOf(week)
+  week = index===6?todays[0]:todays[index+1]
   if (['星期六', '星期日'].includes(week)) {
     text += `今天可是${week}哦，继续睡懒觉~`
   }
