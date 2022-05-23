@@ -6,10 +6,9 @@
 import dayjs, { weekToday } from '../../../utils/dayjs'
 
 export const textTemplate = (data: TextTemplateProps) => {
-  // const { caiHongpi, sayLove, songLyrics, oneMagazines, netEaseCloud, oneWord, dayEnglish } = data
-  const { caiHongpi, sayLove, songLyrics, oneMagazines, lzmy } = data
+  const { caiHongpi, sayLove, songLyrics, oneMagazines, netEaseCloud, oneWord, dayEnglish } = data
 
-  let text = '早安😆ljfwxy\n'
+  let text = '早安😆懒猫\n'
 
   // 工作日/休息日，需要排除节假日
   let week = weekToday()
@@ -62,12 +61,6 @@ ${sayLove.content}\n`
   if (dayEnglish) {
     text += `
 『每日英语（${dayjs(dayEnglish.date).format('ll')}』${dayEnglish.content}`
-  }
-
-  // 励志古言
-  if (lzmy) {
-    text += `
-『励志古言』${lzmy.saying}——${lzmy.source}\n`
   }
 
   return {

@@ -33,9 +33,6 @@ enum LoveMsgURL {
   joke = 'http://api.tianapi.com/joke/index',
   // 一言
   oneWord = 'https://v1.hitokoto.cn/?encode=json',
-
-  // 励志古言
-  lzmy = 'http://api.tianapi.com/lzmy/index',
 }
 
 class API {
@@ -132,13 +129,6 @@ class API {
     } catch (error) {
       return null
     }
-  }
-
-  
-  // 励志古言
-  async getLzmy() {
-    const res = await getTian<LzmyProps[]>({ url: LoveMsgURL.lzmy })
-    return res?.[0]
   }
 }
 
