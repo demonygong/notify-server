@@ -33,6 +33,9 @@ enum LoveMsgURL {
   joke = 'http://api.tianapi.com/joke/index',
   // 一言
   oneWord = 'https://v1.hitokoto.cn/?encode=json',
+
+  // 励志古言
+  lzmy = 'http://api.tianapi.com/lzmy/index',
 }
 
 class API {
@@ -52,7 +55,6 @@ class API {
   // 天气
   async getWeather(city_name: string): Promise<IWeatherResponseProps> {
     const res = await getTian({ url: LoveMsgURL.weather, params: { city: city_name } })
-    console.log('111:'+res)
     return res?.[0]
   }
 
@@ -128,9 +130,15 @@ class API {
       const response = await axios(LoveMsgURL.oneWord, { timeout: 30000 })
       return response.data
     } catch (error) {
-      console.log(error)
       return null
     }
+  }
+
+  
+  // 励志古言
+  async getLzmy() {
+    const res = await getTian<LzmyProps[]>({ url: LoveMsgURL.lzmy })
+    return res?.[0]
   }
 }
 

@@ -138,6 +138,13 @@ interface OneWordProps {
   creator: string
 }
 
+// 励志古言
+interface LzmyProps {
+  saying: string
+  transl: string
+  source: string
+}
+
 /**
  * 模板
  */
@@ -151,9 +158,10 @@ type TextCardTemplateProps = IWeatherResponseProps & {
 type TextTemplateProps = {
   sayLove: SayloveProps | null
   caiHongpi: SayloveProps | null
-  oneWord: OneWordProps | null
+  // oneWord: OneWordProps | null
   songLyrics: IVerseProps | null
   oneMagazines: OneMagazines | null
-  netEaseCloud: NetEaseCloudProps | null
-  dayEnglish: ResEnglishProps | null
+  // netEaseCloud: NetEaseCloudProps | null
+  // dayEnglish: ResEnglishProps | null
+  lzmy: LzmyProps | null
 }
