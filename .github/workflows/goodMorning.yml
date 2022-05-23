@@ -1,17 +1,15 @@
 name: GoodMorning
-on:
-  workflow_dispatch:
-    branches:
-      - master
-  schedule:
-    # `分 时 天 月 周` 时按照标准时间 北京时间=标准时间+8 18表示北京时间早上2点
-    - cron: '30 23 * * *'
-    - cron: '0 4 * * *'
-    - cron: '0 10 * * *'
 # on:
-#   push:
+#   workflow_dispatch:
 #     branches:
 #       - master
+#   schedule:
+#     # `分 时 天 月 周` 时按照标准时间 北京时间=标准时间+8 18表示北京时间早上2点
+#     - cron: '30 23 * * *'
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build:
@@ -49,7 +47,6 @@ jobs:
 
       # 5. 运行脚本
       - name: 运行脚本
-        if: github.event.schedule == '30 23 * * *'
         run: pnpm start
         env:
           WX_COMPANY_ID: ${{ secrets.WX_COMPANY_ID }}
@@ -57,21 +54,3 @@ jobs:
           WX_APP_SECRET: ${{ secrets.WX_APP_SECRET }}
           TIAN_API_KEY: ${{ secrets.TIAN_API_KEY }}
           MESSAGE_TYPE: goodMorning
-      - name: 运行脚本2
-        if: github.event.schedule == '0 4 * * *'
-        run: pnpm start
-        env:
-          WX_COMPANY_ID: ${{ secrets.WX_COMPANY_ID }}
-          WX_APP_ID: ${{ secrets.WX_APP_ID }}
-          WX_APP_SECRET: ${{ secrets.WX_APP_SECRET }}
-          TIAN_API_KEY: ${{ secrets.TIAN_API_KEY }}
-          MESSAGE_TYPE: goodAfternoon
-      - name: 运行脚本3
-        if: github.event.schedule == '0 10 * * *'
-        run: pnpm start
-        env:
-          WX_COMPANY_ID: ${{ secrets.WX_COMPANY_ID }}
-          WX_APP_ID: ${{ secrets.WX_APP_ID }}
-          WX_APP_SECRET: ${{ secrets.WX_APP_SECRET }}
-          TIAN_API_KEY: ${{ secrets.TIAN_API_KEY }}
-          MESSAGE_TYPE: goodEvening
